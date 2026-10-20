@@ -1,0 +1,764 @@
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap');
+
+html,
+
+
+/* ── แอพหลัก ── */
+body {
+  min-width: 100%;
+  max-width: 450px;
+  min-height: 100%;
+  margin: 0 auto;
+
+  font-family: 'Sarabun', sans-serif;
+  color: #000;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.footer-version {
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 12px;
+  color: #7b7878;
+  box-sizing: border-box;
+}
+
+.app-container {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+
+  background-image: url('/images/YAAKZ_MEMBER-BG1-01.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+.app-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.45); /* ปรับความจางตรงนี้ */
+  z-index: 0;
+}
+
+.app-content,
+.app-bottom {
+  position: relative;
+  z-index: 1;
+}
+
+/* bottom nav */
+.app-bottom {
+  position: fixed;
+  bottom: 10px;
+  border-radius: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 95%;
+  max-width: 490px;
+
+  background: #cae5f9;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 1000;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+.loader {
+  min-height: 400px;
+}
+
+.justify-content {
+  display: flex;
+  width: 100%;
+  gap: 5px;
+  .center {
+    justify-content: center;
+  }
+  .between {
+    justify-content: space-between;
+  }
+  .around {
+    justify-content: space-around;
+  }
+  .evenly {
+    justify-content: space-evenly;
+  }
+}
+
+.box-search-product {
+  align-items: center;
+  width: 85%;
+
+  padding: 10px;
+  background-color: #fff;
+  height: 130px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  .select-type {
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: #fff;
+    border: #1677ff 1px solid;
+    height: 25px;
+  }
+}
+
+.box-search-product2 {
+  align-items: center;
+  width: 85%;
+  margin-top: 40;
+  margin-left: auto;
+  margin-right: auto;
+}
+.select-type {
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 30px;
+  background-color: #fff;
+  border: #1677ff 1px solid;
+  height: 25px;
+}
+
+.btn-confirm {
+  width: 100%;
+  border-radius: 20px !important;
+  padding: 10px !important;
+}
+
+.input {
+  padding: 10px;
+  margin-bottom: 5px !important;
+  border-radius: 20px !important;
+  background-color: #ffffff !important;
+  border: #d9d9d9 1px solid !important;
+  height: 25px !important;
+  width: 95% !important;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  gap: 10px;
+}
+
+.input-email {
+  padding: 10px;
+  margin-bottom: 5px !important;
+  border-radius: 20px !important;
+  background-color: #ffffff !important;
+  border: #d9d9d9 1px solid !important;
+  height: 25px !important;
+  width: 95% !important;
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  gap: 10px;
+}
+
+.input-email-verify {
+  padding: 5px;
+  margin-bottom: 5px;
+  margin: 2px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: #d9d9d9 1px solid;
+  height: 25px;
+  width: 30px;
+  text-align: center;
+}
+
+.input-base {
+  width: 90%;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-control-search {
+  margin: 20px;
+  border-radius: 20px;
+  border: 0;
+  width: 80%;
+}
+
+.btn-search {
+  width: 70%;
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  color: #7b7878;
+  margin: 5px;
+}
+
+.box-cart-item {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  border: 1px #d9d9d9 solid;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.icon-tap {
+  width: 30px;
+  height: 30px;
+}
+
+.card-item-slider {
+  width: 140px;
+  height: 99px;
+  border-radius: 20%;
+  background-color: #f1f1f1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+.card-item-image-slider {
+  width: 140px;
+  height: 174px;
+  border-radius: 50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.box-stock {
+  width: 90%;
+  height: 129px;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-top: 50px;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  display: flex;
+  justify-content: center;
+}
+
+.slider-container .slick-list {
+  padding-right: 60px; /* 👈 ปรับความโผล่ตรงนี้ */
+}
+
+.slider-container .slick-slide > div {
+  padding-right: 12px; /* spacing ระหว่าง card */
+}
+.slider-container {
+  width: 95%;
+  margin-left: 15px;
+}
+
+.box-item-station {
+  padding: 10px;
+  box-shadow: rgba(145, 145, 145, 0.1) 0px 10px 50px;
+  width: '80%';
+  background-color: #fff;
+  margin: 20px;
+  border-radius: 20px;
+  display: flex;
+  align-self: flex-start;
+  justify-content: center;
+}
+
+.text-3-line {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* จำนวนบรรทัด */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+  padding: 0;
+  text-align: left;
+  width: 90%;
+}
+
+.filter-date-input-report2 {
+  border-radius: 20px !important;
+  height: 40px !important;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.coupon {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 10;
+  width: 80%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.coupon-detail {
+  white-space: normal;
+}
+
+.coupon .ready-stamp {
+  position: absolute;
+  top: 15px;
+  right: -35px;
+
+  background: #24f03f;
+  color: white;
+
+  padding: 6px 40px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+
+  transform: rotate(35deg);
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* วงเว้า บน + ล่าง */
+.coupon::before,
+.coupon::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: #f3f3f3; /* สีพื้นหลังด้านนอก */
+  border-radius: 50%;
+  left: 70%;
+  transform: translateX(-50%);
+}
+
+/* ด้านบน */
+.coupon::before {
+  top: -12px;
+}
+
+/* ด้านล่าง */
+.coupon::after {
+  bottom: -12px;
+  background: #ececec;
+}
+
+/* เส้นแบ่งกลาง (เหมือนรอยฉีก) */
+.coupon-divider {
+  position: absolute;
+
+  top: 12px;
+  bottom: 12px;
+  right: 30%; /* ปรับตำแหน่งเส้น */
+  border-left: 2px dashed #ddd;
+}
+
+.coupon-info-divider {
+  top: 12px;
+  bottom: 12px;
+  right: 30%; /* ปรับตำแหน่งเส้น */
+  border: 2px dashed #ddd;
+}
+
+.coupon-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+
+  background: #ff6b6b;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.box-points {
+  background-color: #fff;
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  border-radius: 20px;
+  height: 115px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.coupon2 {
+  position: relative;
+  background: #f5f5f5;
+  border-radius: 16px;
+  padding: 16px 20px;
+  width: 80%;
+  overflow: hidden;
+
+  /* ฟีลใช้แล้ว */
+  opacity: 0.75;
+  filter: grayscale(0.4);
+
+  /* เส้นขีดทับ */
+  border: 2px dashed #cfcfcf;
+
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.06);
+}
+
+/* รอยฉีกด้านบน + ล่าง */
+.coupon2::before,
+.coupon2::after {
+  content: '';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: #ececec;
+  border-radius: 50%;
+  left: 70%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.coupon2::before {
+  top: -13px;
+}
+
+.coupon2::after {
+  bottom: -13px;
+}
+
+/* เส้นฉีกกลาง */
+.coupon2 .coupon-divider {
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  right: 30%;
+  border-left: 2px dashed #bdbdbd;
+}
+
+/* แถบ USED */
+.coupon2 .used-stamp {
+  position: absolute;
+  top: 10px;
+  right: -35px;
+
+  background: #999;
+  color: white;
+
+  padding: 6px 40px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+
+  transform: rotate(35deg);
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* รอยฉีกล่าง */
+.coupon2 .tear {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+
+  background: radial-gradient(
+    circle at 10px -2px,
+    transparent 12px,
+    #e5e5e5 13px
+  );
+
+  background-size: 20px 20px;
+}
+
+.box-points-profile {
+  background-color: #f9f9f9;
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  border-radius: 20px;
+  height: 200px;
+  margin-top: -70px;
+}
+
+.box-points-profile-left {
+  background-color: #fff;
+  width: 152px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 20px;
+  height: 79px;
+  margin-top: 80px;
+}
+
+.dialog-success {
+  position: fixed;
+}
+
+.box-points-left {
+  background-color: #f9f9f9;
+  width: 152px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 20px;
+  height: 79px;
+}
+
+.box-points-profile-right {
+  margin-top: 80px;
+}
+
+.point {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.point2 {
+  display: flex;
+  justify-content: left;
+}
+
+.icon-point {
+  border: #1677ff 1px solid;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.icon-point2 {
+  background-color: #1677ff;
+  width: 18px;
+  height: 18px;
+  border-radius: 20px;
+  margin-left: 1px;
+  margin-top: 1px;
+}
+
+.icon-point-reward2 {
+  background-color: #d1d0d0;
+  width: 18px;
+  height: 18px;
+  border-radius: 20px;
+  margin-left: 1px;
+  margin-top: 1px;
+}
+
+.icon-point-reward {
+  border: #d1d0d0 1px solid;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.tab-active {
+  padding: 10px 20px;
+  border-radius: 10px 10px 0px 0px;
+  background: #f5f5f5;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tab-active.active {
+  background: #1976d2;
+  border-radius: 10px 10px 0px 0px;
+  color: white;
+  font-weight: bold;
+}
+
+.order-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-card {
+  width: 87%;
+  border-radius: 20px;
+  padding: 10px;
+  padding-bottom: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.book {
+  width: 140px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20%;
+}
+
+.book-title {
+  display: flex;
+  width: 130px;
+  height: 190px;
+  position: absolute;
+  margin-left: -18px;
+  border-radius: 20px 0px 0px 0px;
+  background-color: #91bae1;
+}
+
+/* หน้าปก */
+.book-cover {
+  width: 130px;
+  height: 190px;
+  position: relative;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: 20px 0px 0px 0px;
+  background-color: #fff;
+  border-right: 1px solid #e3e3e3;
+
+  z-index: 2;
+}
+
+.book-cover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15px; /* ความกว้างสันหนังสือ */
+  height: 100%;
+  background: #91bae1;
+}
+
+.book-cover img {
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center; /* ให้ครอปรูปโดยยึดด้านขวา */
+}
+
+/* ส่วนด้านล่าง */
+.book-bottom {
+  position: relative;
+  width: 124px;
+  height: 20px;
+  z-index: 2;
+  background: #efe3d7;
+  border-radius: 20px 0 10px 20px;
+  border-top: 7px solid #7799b9;
+  border-bottom: 7px solid #7799b9;
+  border-left: 7px solid #7799b9;
+  margin-top: -20px;
+  box-shadow: -8px 0 0 #7799b9;
+}
+
+/* ที่คั่นหนังสือ */
+.bookmark {
+  position: absolute;
+  right: 18px;
+
+  width: 18px;
+  height: 40px;
+  background: #bfa58f;
+}
+
+.bookmark::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: inherit;
+  clip-path: polygon(0 0, 50% 70%, 100% 0, 100% 100%, 0 100%);
+}
+
+.box-cart {
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.box-chkout {
+  width: 90%;
+  display: grid;
+  gap: 10px;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.box-quantity {
+  width: 40%;
+  height: 30px;
+  border-radius: 20px;
+  border: 1px solid #1677ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.justify-content {
+  display: flex;
+  width: 100%;
+  gap: 15px;
+}
+
+.justify-content.start {
+  justify-content: flex-start;
+}
+
+.justify-content.center {
+  justify-content: center;
+}
+
+.justify-content.between {
+  justify-content: space-between;
+}
+
+.justify-content.around {
+  justify-content: space-around;
+}
+
+.justify-content.evenly {
+  justify-content: space-evenly;
+}
+
+.justify-content.items-center {
+  align-items: center;
+}
+
+[data-hot-toast-wrapper] {
+  z-index: 999999 !important;
+}

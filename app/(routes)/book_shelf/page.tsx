@@ -1,6 +1,6 @@
 'use client'
-import Html5QrcodePlugin from '@/componets/BarcodeScanner'
-import ImageSlider from '@/componets/BookGrid/page'
+import Html5QrcodePlugin from '@/components/BarcodeScanner'
+import ImageSlider from '@/components/BookGrid/page'
 import { ProductItem } from '@/models/type'
 import ApiService from '@/services/ApiService'
 import { formatBalance, getImageUrlFromDynamic } from '@/services/StringUtils'
@@ -30,15 +30,15 @@ import toast from 'react-hot-toast'
 
 import { useRouter } from 'next/navigation'
 
-import BookDialogs from '@/componets/dialogs/BookDialog/page'
-import BookCard from '@/componets/BookCard/page'
+import BookDialogs from '@/components/dialogs/BookDialog/page'
+import BookCard from '@/components/BookCard/page'
 
-import BookGrid from '@/componets/BookGrid/page'
-import DeleteBookDialog from '@/componets/dialogs/DeleteBookDialog/page'
-import MoveBookDialog from '@/componets/dialogs/MoveBookDialog/page'
-import BookDialog from '@/componets/dialogs/BookDialog/page'
-import EditBookDialog from '@/componets/dialogs/EditBookDialog/page'
-import FormAddNewBook from '@/componets/dialogs/FormAddNewBook/page'
+import BookGrid from '@/components/BookGrid/page'
+import DeleteBookDialog from '@/components/dialogs/DeleteBookDialog/page'
+import MoveBookDialog from '@/components/dialogs/MoveBookDialog/page'
+import BookDialog from '@/components/dialogs/BookDialog/page'
+import EditBookDialog from '@/components/dialogs/EditBookDialog/page'
+import FormAddNewBook from '@/components/dialogs/FormAddNewBook/page'
 export default function Stock() {
   // ================= UI CONTROL =================
   const [open, setOpen] = React.useState(false)

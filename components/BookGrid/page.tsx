@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react'
 import { ProductItem } from '@/models/type'
-import BookCard from '@/componets/BookCard/page'
+import BookCard from '@/components/BookCard/page'
 
 import {
   ArrowForwardIos,

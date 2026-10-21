@@ -33,11 +33,11 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "componets/Appbar",
-    "componets/ProductItem",
-    "componets/dialogs/ProductDetail",
+    "components/Appbar",
+    "components/ProductItem",
+    "components/dialogs/ProductDetail",
     ".next/dev/types/**/*.ts"
-, "componets/ItemSlider"  ],
+, "components/ItemSlider"  ],
   "exclude": [
     "node_modules"
   ]

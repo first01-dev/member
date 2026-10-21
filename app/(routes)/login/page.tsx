@@ -20,7 +20,7 @@ import {
   Typography,
 } from '@mui/material'
 import Image from 'next/image'
-import Prototype from '@/componets/Prototype/page'
+import Prototype from '@/components/Prototype/page'
 import {
   Close,
   MailRounded,
@@ -29,7 +29,7 @@ import {
   VpnKeyRounded,
 } from '@mui/icons-material'
 import { Navigation } from '@/services/Navigation'
-import FormEditUserProps from '@/componets/dialogs/FormEditUser/page'
+import FormEditUserProps from '@/components/dialogs/FormEditUser/page'
 import toast from 'react-hot-toast'
 import {
   clearLocalStorage,

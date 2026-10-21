@@ -1,9 +1,9 @@
 'use client'
-import FromAddAddressProps from '@/componets/dialogs/AddAddress/page'
-import FormEditAddressProps from '@/componets/dialogs/EditAddress/page'
+import FromAddAddressProps from '@/components/dialogs/AddAddress/page'
+import FormEditAddressProps from '@/components/dialogs/EditAddress/page'
 import FormEditUserProps, {
   FormEditUserBody,
-} from '@/componets/dialogs/FormEditUser/page'
+} from '@/components/dialogs/FormEditUser/page'
 import { Province } from '@/interface/ThaiAddress'
 import { key } from '@/models/constant'
 import { AddressBook, EditUser, ProductItem, StationList } from '@/models/type'

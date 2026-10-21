@@ -41,14 +41,14 @@ import {
   setLocalStorage,
 } from '@/services/StorageUtils'
 
-import Html5QrcodePlugin from '@/componets/BarcodeScanner'
+import Html5QrcodePlugin from '@/components/BarcodeScanner'
 
-import BookDialog from '@/componets/dialogs/BookDialog/page'
+import BookDialog from '@/components/dialogs/BookDialog/page'
 
 import FormEditUserProps, {
   FormEditUserBody,
-} from '@/componets/dialogs/FormEditUser/page'
-import BookGrid from '@/componets/BookGrid/page'
+} from '@/components/dialogs/FormEditUser/page'
+import BookGrid from '@/components/BookGrid/page'
 import axios from 'axios'
 
 export default function Home() {

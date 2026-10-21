@@ -1,8 +1,8 @@
 'use client'
 
-import Html5QrcodePlugin from '@/componets/BarcodeScanner'
-import BookStstionDialogs from '@/componets/dialogs/BookStation/page'
-import ImageSlider from '@/componets/BookGrid/page'
+import Html5QrcodePlugin from '@/components/BarcodeScanner'
+import BookStstionDialogs from '@/components/dialogs/BookStation/page'
+import ImageSlider from '@/components/BookGrid/page'
 
 import { key } from '@/models/constant'
 import { CartItem, ProductItem } from '@/models/type'

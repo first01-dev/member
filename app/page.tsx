@@ -1,8 +1,15 @@
+'use client'
+
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+
 export default function Home() {
-  return (
-    <main>
-      <h1>My First Next.js App</h1>
-      <p>Deploy สำเร็จแล้ว!</p>
-    </main>
-  );
+  const router = useRouter()
+
+  useEffect(() => {
+    router.replace('/home/')
+    
+  }, [router])
+
+  return null
 }

@@ -37,6 +37,8 @@ import router from 'next/router'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 
+import { Suspense } from 'react'
+
 export interface FormBookAddressForm {
   name: string
   address: string

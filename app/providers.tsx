@@ -73,7 +73,8 @@ export default function Providers({
 
     if (!token) {
       clearLocalStorage(key.CUSTOMER)
-      router.replace('/login/')
+      // ปิดบังคับ login
+      // router.replace('/login/')
     }
   }
 
@@ -88,7 +89,7 @@ export default function Providers({
     <GoogleOAuthProvider
       clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}
     >
-      <Toaster
+      {/* <Toaster
         position="top-center"
         containerStyle={{
           zIndex: 999999,
@@ -98,7 +99,7 @@ export default function Providers({
             zIndex: 999999,
           },
         }}
-      />
+      /> */}
 
       <div className="app-container">
         <div
@@ -108,14 +109,14 @@ export default function Providers({
           }}
         >
           <ThemeProvider theme={theme}>
-  {publicPaths.includes(pathname) ? (
-    children
-  ) : (
-    <AuthGuard>
-      {children}
-    </AuthGuard>
-  )}
-</ThemeProvider>
+            {publicPaths.includes(pathname) ? (
+              children
+            ) : (
+              <AuthGuard>
+                {children}
+              </AuthGuard>
+            )}
+          </ThemeProvider>
         </div>
 
         {!hideAppBar && (

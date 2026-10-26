@@ -429,36 +429,42 @@ export default function Home() {
       return
     }
 
-    try {
-      const payload: EditUser = {
-        name: data.name,
-        email: data.email,
-        gender: data.gender,
-        phone: data.phone,
-        bod: data.bod,
-        current: 1,
-      }
+    router.push('/profile/?openFormAddAddress=true')
 
-      const res = await ApiService.updateCustomer(customer._id, payload)
+    // try {
+    //   const payload: EditUser = {
+    //     name: data.name,
+    //     email: data.email,
+    //     gender: data.gender,
+    //     phone: data.phone,
+    //     bod: data.bod,
+    //     current: 1,
+    //   }
 
-      if (res.data.status === 'success') {
-        toast.success(res.data.message)
+    //   const res = await ApiService.updateCustomer(customer._id, payload)
 
-        await getCustomerList()
+    //   if (res.data.status === 'success') {
+    //     toast.success(res.data.message)
 
-        setOpenFormEditUser(false)
+    //     // await getCustomerList()
 
-        return
-      }
+    //     // setOpenFormEditUser(false)
 
-      toast.error(res.data.message)
-    } catch (error) {
-      console.error(error)
+    //     // แก้ให้ไปหน้า profile
+    //     router.push('/profile/')
 
-      toast.error('เกิดข้อผิดพลาดในการบันทึกข้อมูล')
-    } finally {
-      setIsLoading(false)
-    }
+    //     return
+    //   }
+
+    //   toast.error(res.data.message)
+    // } catch (error) {
+    //   console.error(error)
+
+    //   toast.error('เกิดข้อผิดพลาดในการบันทึกข้อมูล')
+    // } finally {
+    //   setIsLoading(false)
+    // }
+
   }
 
   // =====================================================

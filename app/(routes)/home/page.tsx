@@ -431,39 +431,39 @@ export default function Home() {
 
     // router.push('/profile/?openFormAddAddress=true')
 
-    // try {
-    //   const payload: EditUser = {
-    //     name: data.name,
-    //     email: data.email,
-    //     gender: data.gender,
-    //     phone: data.phone,
-    //     bod: data.bod,
-    //     current: 1,
-    //   }
+    try {
+      const payload: EditUser = {
+        name: data.name,
+        email: data.email,
+        gender: data.gender,
+        phone: data.phone,
+        bod: data.bod,
+        current: 1,
+      }
 
-    //   const res = await ApiService.updateCustomer(customer._id, payload)
+      const res = await ApiService.updateCustomer(customer._id, payload)
 
-    //   if (res.data.status === 'success') {
-    //     toast.success(res.data.message)
+      if (res.data.status === 'success') {
+        toast.success(res.data.message)
 
-    //     // await getCustomerList()
+        // await getCustomerList()
 
-    //     // setOpenFormEditUser(false)
+        // setOpenFormEditUser(false)
 
-    //     // แก้ให้ไปหน้า profile
-    //     router.push('/profile/')
+        // แก้ให้ไปหน้า profile
+        router.push('/profile/')
 
-    //     return
-    //   }
+        return
+      }
 
-    //   toast.error(res.data.message)
-    // } catch (error) {
-    //   console.error(error)
+      toast.error(res.data.message)
+    } catch (error) {
+      console.error(error)
 
-    //   toast.error('เกิดข้อผิดพลาดในการบันทึกข้อมูล')
-    // } finally {
-    //   setIsLoading(false)
-    // }
+      toast.error('เกิดข้อผิดพลาดในการบันทึกข้อมูล')
+    } finally {
+      setIsLoading(false)
+    }
 
   }
 

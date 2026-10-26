@@ -429,7 +429,7 @@ export default function Home() {
       return
     }
 
-    router.push('/profile/?openFormAddAddress=true')
+    // router.push('/profile/?openFormAddAddress=true')
 
     // try {
     //   const payload: EditUser = {

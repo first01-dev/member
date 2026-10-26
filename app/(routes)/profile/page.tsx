@@ -35,9 +35,9 @@ import Lottie from 'react-lottie'
 import router from 'next/router'
 
 import { useEffect, useState } from 'react'
-import { useSearchParams } from 'next/navigation'
+// import { useSearchParams } from 'next/navigation'
 
-// import { Suspense } from 'react'
+import { Suspense } from 'react'
 
 export interface FormBookAddressForm {
   name: string
@@ -56,7 +56,7 @@ export default function MyListProps() {
   const [isLoading, setIsLoading] = React.useState(false)
   const [sentType, setSentType] = React.useState('recive_store')
   
-  const searchParams = useSearchParams()
+  // const searchParams = useSearchParams()
   const [openFormAddAddress, setOpenFormAddAddress] = React.useState(false)
   const [openFormEditAddress, setOpenFormEditAddress] = React.useState(false)
   const [openFormEditUser, setOpenFormEditUser] = React.useState(false)
@@ -261,12 +261,6 @@ export default function MyListProps() {
     getCustomerList()
   }, [])
 
-  useEffect(() => {
-    if (searchParams.get('openFormAddAddress') === 'true') {
-      setOpenFormAddAddress(true)
-      setIsFromPreviousPage(true)
-    }
-  }, [searchParams])
 
   return (
     <Box>

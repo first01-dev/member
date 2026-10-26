@@ -28,11 +28,11 @@ const navItems = [
     icon: MenuBookRounded,
     path: '/book_shelf/',
   },
-  {
-    label: 'My List',
-    icon: LocalMallRounded,
-    path: '/pre_station/',
-  },
+  // {
+  //   label: 'My List',
+  //   icon: LocalMallRounded,
+  //   path: '/pre_station/',
+  // },
   {
     label: 'Order',
     icon: AssignmentTurnedInRounded,

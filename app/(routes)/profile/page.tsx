@@ -37,7 +37,7 @@ import router from 'next/router'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 
-import { Suspense } from 'react'
+// import { Suspense } from 'react'
 
 export interface FormBookAddressForm {
   name: string
@@ -260,8 +260,8 @@ export default function MyListProps() {
     getAddressList()
     getCustomerList()
   }, [])
-
-  useEffect(() => {
+  
+  React.useEffect(() => {
     if (searchParams.get('openFormAddAddress') === 'true') {
       setOpenFormAddAddress(true)
       setIsFromPreviousPage(true)

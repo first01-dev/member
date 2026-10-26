@@ -261,12 +261,12 @@ export default function MyListProps() {
     getCustomerList()
   }, [])
   
-  React.useEffect(() => {
-    if (searchParams.get('openFormAddAddress') === 'true') {
-      setOpenFormAddAddress(true)
-      setIsFromPreviousPage(true)
-    }
-  }, [searchParams])
+  // React.useEffect(() => {
+  //   if (searchParams.get('openFormAddAddress') === 'true') {
+  //     setOpenFormAddAddress(true)
+  //     setIsFromPreviousPage(true)
+  //   }
+  // }, [searchParams])
 
   return (
     <Box>

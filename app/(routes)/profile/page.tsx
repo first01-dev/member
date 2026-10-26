@@ -37,8 +37,6 @@ import router from 'next/router'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 
-// import { Suspense } from 'react'
-
 export interface FormBookAddressForm {
   name: string
   address: string
@@ -74,8 +72,6 @@ export default function MyListProps() {
   const [googleInfo, setGoogleInfo] = React.useState<any>('')
 
   const navigate = Navigation()
-  
-  const [isFromPreviousPage, setIsFromPreviousPage] = useState(false)
 
   const handleOprnFormEditAddress = (item: AddressBook) => {
     setEditAddress(item)
@@ -260,13 +256,12 @@ export default function MyListProps() {
     getAddressList()
     getCustomerList()
   }, [])
-  
-  // React.useEffect(() => {
-  //   if (searchParams.get('openFormAddAddress') === 'true') {
-  //     setOpenFormAddAddress(true)
-  //     setIsFromPreviousPage(true)
-  //   }
-  // }, [searchParams])
+
+  useEffect(() => {
+    if (searchParams.get('openFormAddAddress') === 'true') {
+      setOpenFormAddAddress(true)
+    }
+  }, [searchParams])
 
   return (
     <Box>
@@ -520,7 +515,6 @@ export default function MyListProps() {
         open={openFormAddAddress}
         onClose={() => setOpenFormAddAddress(false)}
         onSubmit={onSubmitAddAddress}
-        isFromPreviousPage={isFromPreviousPage}
       />
     </Box>
   )

@@ -34,9 +34,6 @@ interface AddAddressProps {
   open: boolean
   onClose: () => void
   onSubmit: (value: FormBookAddressForm, onSuccess?: () => void) => void
-
-  // ไว้ส่งค่าจากอีกหน้าเพื่อเลือกคำที่ใช้ 
-  isFromPreviousPage?: boolean
 }
 export default function FromAddAddressProps(props: AddAddressProps) {
   const [form, setForm] = React.useState<FormBookAddressForm>({
@@ -299,9 +296,7 @@ export default function FromAddAddressProps(props: AddAddressProps) {
                 textTransform: 'none',
               }}
             >
-              {/* ไว้ส่งค่าจากอีกหน้าเพื่อเลือกคำที่ใช้ */}
-              {/* ยกเลิก */}
-              {props.isFromPreviousPage ? 'เอาไว้ทีหลัง' : 'ยกเลิก'}
+              ยกเลิก
             </Button>
 
             <Button

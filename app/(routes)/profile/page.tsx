@@ -1,9 +1,9 @@
 'use client'
-import FromAddAddressProps from '@/componets/dialogs/AddAddress/page'
-import FormEditAddressProps from '@/componets/dialogs/EditAddress/page'
+import FromAddAddressProps from '@/components/dialogs/AddAddress/page'
+import FormEditAddressProps from '@/components/dialogs/EditAddress/page'
 import FormEditUserProps, {
   FormEditUserBody,
-} from '@/componets/dialogs/FormEditUser/page'
+} from '@/components/dialogs/FormEditUser/page'
 import { Province } from '@/interface/ThaiAddress'
 import { key } from '@/models/constant'
 import { AddressBook, EditUser, ProductItem, StationList } from '@/models/type'
@@ -34,6 +34,11 @@ import toast from 'react-hot-toast'
 import Lottie from 'react-lottie'
 import router from 'next/router'
 
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+
+// import { Suspense } from 'react'
+
 export interface FormBookAddressForm {
   name: string
   address: string
@@ -50,6 +55,8 @@ export default function MyListProps() {
 
   const [isLoading, setIsLoading] = React.useState(false)
   const [sentType, setSentType] = React.useState('recive_store')
+  
+  const searchParams = useSearchParams()
   const [openFormAddAddress, setOpenFormAddAddress] = React.useState(false)
   const [openFormEditAddress, setOpenFormEditAddress] = React.useState(false)
   const [openFormEditUser, setOpenFormEditUser] = React.useState(false)
@@ -67,6 +74,8 @@ export default function MyListProps() {
   const [googleInfo, setGoogleInfo] = React.useState<any>('')
 
   const navigate = Navigation()
+  
+  const [isFromPreviousPage, setIsFromPreviousPage] = useState(false)
 
   const handleOprnFormEditAddress = (item: AddressBook) => {
     setEditAddress(item)
@@ -251,6 +260,13 @@ export default function MyListProps() {
     getAddressList()
     getCustomerList()
   }, [])
+
+  useEffect(() => {
+    if (searchParams.get('openFormAddAddress') === 'true') {
+      setOpenFormAddAddress(true)
+      setIsFromPreviousPage(true)
+    }
+  }, [searchParams])
 
   return (
     <Box>
@@ -504,6 +520,7 @@ export default function MyListProps() {
         open={openFormAddAddress}
         onClose={() => setOpenFormAddAddress(false)}
         onSubmit={onSubmitAddAddress}
+        isFromPreviousPage={isFromPreviousPage}
       />
     </Box>
   )

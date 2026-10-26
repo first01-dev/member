@@ -265,6 +265,8 @@ export default function MyListProps() {
 
 
   return (
+    
+    <Suspense fallback={<div>กำลังโหลด...</div>}>
     <Box>
       <div style={{ height: 'calc(100vh - 180px)', overflow: 'scroll' }}>
         <div
@@ -512,14 +514,14 @@ export default function MyListProps() {
         onSubmit={onSubmitEditAddress}
       />
 
-      <Suspense fallback={<div>กำลังโหลด...</div>}>
         <FromAddAddressProps
           open={openFormAddAddress}
           onClose={() => setOpenFormAddAddress(false)}
           onSubmit={onSubmitAddAddress}
           isFromPreviousPage={isFromPreviousPage}
         />
-      </Suspense>
     </Box>
+    
+    </Suspense>
   )
 }

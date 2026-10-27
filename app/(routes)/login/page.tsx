@@ -244,6 +244,7 @@ export default function Index() {
   }
 
   const showError = (message: string) => {
+    console.log('showError ถูกเรียก:', message)
     toast.error(message)
     setIsLoading(false)
   }
@@ -296,9 +297,9 @@ const handleLogin = async (
     const { email, password } = login
 
     try {
-      if (!email) return showError('กรุณาพิมพ์อีเมล')
-      if (!isValidEmail(email)) return showError('รูปแบบอีเมลไม่ถูกต้อง')
-      if (!password) return showError('กรุณาพิมพ์รหัสผ่าน')
+      if (!email?.trim()) return showError('กรุณาพิมพ์อีเมล')
+      if (!isValidEmail(email.trim())) return showError('รูปแบบอีเมลไม่ถูกต้อง')
+      if (!password?.trim()) return showError('กรุณาพิมพ์รหัสผ่าน')
 
       const { data } = await ApiService.login(email, password)
 

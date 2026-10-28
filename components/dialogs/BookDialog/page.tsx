@@ -351,7 +351,7 @@ const hasActions =
           <Barcode
             value={item.barcode || item.isbn || ''}
             width={2}
-            height={60}
+            height={90}
             displayValue={false}
           />
         </Box>

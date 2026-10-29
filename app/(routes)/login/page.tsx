@@ -372,33 +372,33 @@ const handleLogin = async (
         const googleId = user.sub
         const picture = user.picture
 
-        // // 👉 login backend
-        // let { data } = await ApiService.login(email, googleId)
+        // 👉 login backend
+        let { data } = await ApiService.login(email, googleId)
 
-        // // 👉 สมัครอัตโนมัติถ้ายังไม่มี user
-        // if (data.status === 'error') {
-        //   if (data.message === 'ไม่พบข้อมูลลูกค้าในระบบ') {
-        //     await ApiService.register('sso', email, googleId, name)
+        // 👉 สมัครอัตโนมัติถ้ายังไม่มี user
+        if (data.status === 'error') {
+          if (data.message === 'ไม่พบข้อมูลลูกค้าในระบบ') {
+            await ApiService.register('sso', email, googleId, name)
 
-        //     const resLogin = await ApiService.login(email, googleId)
+            const resLogin = await ApiService.login(email, googleId)
 
-        //     data = resLogin.data
-        //   } else {
-        //     toast.error(data.message)
-        //     return
-        //   }
-        // }
+            data = resLogin.data
+          } else {
+            toast.error(data.message)
+            return
+          }
+        }
 
-        // // 👉 login success
-        // if (data.accessToken) {
-        //   handleLoginSuccess({
-        //     ...data,
-        //     customer: {
-        //       ...data.customer,
-        //       picture,
-        //     },
-        //   })
-        // }
+        // 👉 login success
+        if (data.accessToken) {
+          handleLoginSuccess({
+            ...data,
+            customer: {
+              ...data.customer,
+              picture,
+            },
+          })
+        }
       } catch (err) {
         toast.error('ดึงข้อมูล Google ไม่สำเร็จ')
       }

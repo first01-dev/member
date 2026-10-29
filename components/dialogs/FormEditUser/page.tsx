@@ -280,7 +280,7 @@ export default function FormEditUserProps(props: FormEditUserProps) {
           </div>
           <DialogActions >
             {/* แก้ไขให้หน้า home กดยกเลิกได้ */}
-            {userFound &&(
+            {/* {userFound &&( */}
               <Button
               fullWidth
               variant="outlined"
@@ -294,7 +294,7 @@ export default function FormEditUserProps(props: FormEditUserProps) {
             >
               ยกเลิก
             </Button>
-            )} 
+            {/* )}  */}
 
             <Button
               disabled={!formData.name || !formData.phone}

@@ -268,58 +268,60 @@ export default function BottomNav() {
     const active = Boolean(path) && path === activePath;
 
     return (
-      <Box
+      <>
+        <Box
 
-        // 2. ใช้ label เป็น key แทน path (เผื่อในอนาคตมีหลายปุ่มที่ path เป็นค่าว่าง '' จะได้ไม่ชนกัน)
-        key={label}
-        // 3. เช็กก่อนว่ามี onClick ไหม ถ้ามีให้สั่งติดตั้ง ถ้าไม่มีค่อยเปลี่ยนหน้า
-        onClick={() => {
-          if (onClick) {
-            onClick(); // กด Install App -> อยู่หน้าเดิม + เด้งหน้าต่าง Install ทันที!
-          } else {
-            handleNavigation(path); // กดเมนูอื่น -> เปลี่ยนหน้าตามปกติ
-          }
-        }}
-        
-        // key={path}
-        // onClick={() => handleNavigation(path)}
-        sx={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          transition: 'all .35s cubic-bezier(.4,0,.2,1)',
-          transform: active
-            ? 'translateY(10px)'
-            : 'translateY(0)',
-        }}
-      >
-        <Icon
-          sx={{
-            fontSize: 26,
-            color: active
-              ? NAV_COLOR
-              : '#B9B9B9',
-            transition: 'all .3s ease',
+          // 2. ใช้ label เป็น key แทน path (เผื่อในอนาคตมีหลายปุ่มที่ path เป็นค่าว่าง '' จะได้ไม่ชนกัน)
+          key={label}
+          // 3. เช็กก่อนว่ามี onClick ไหม ถ้ามีให้สั่งติดตั้ง ถ้าไม่มีค่อยเปลี่ยนหน้า
+          onClick={() => {
+            if (onClick) {
+              onClick(); // กด Install App -> อยู่หน้าเดิม + เด้งหน้าต่าง Install ทันที!
+            } else {
+              handleNavigation(path); // กดเมนูอื่น -> เปลี่ยนหน้าตามปกติ
+            }
           }}
-        />
-
-        <Typography
+          
+          // key={path}
+          // onClick={() => handleNavigation(path)}
           sx={{
-            mt: '2px',
-            fontSize: 10,
-            lineHeight: 1,
-            fontWeight: active ? 700 : 500,
-            color: active
-              ? NAV_COLOR
-              : '#B9B9B9',
-            transition: 'all .3s ease',
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            transition: 'all .35s cubic-bezier(.4,0,.2,1)',
+            transform: active
+              ? 'translateY(10px)'
+              : 'translateY(0)',
           }}
         >
-          {label}
-        </Typography>
+          <Icon
+            sx={{
+              fontSize: 26,
+              color: active
+                ? NAV_COLOR
+                : '#B9B9B9',
+              transition: 'all .3s ease',
+            }}
+          />
+
+          <Typography
+            sx={{
+              mt: '2px',
+              fontSize: 10,
+              lineHeight: 1,
+              fontWeight: active ? 700 : 500,
+              color: active
+                ? NAV_COLOR
+                : '#B9B9B9',
+              transition: 'all .3s ease',
+            }}
+          >
+            {label}
+          </Typography>
+        </Box>
 
         <Dialog open={showIOSGuide} onClose={() => setShowIOSGuide(false)} maxWidth="xs" fullWidth>
           <DialogTitle sx={{ fontWeight: 700, fontSize: 18 }}>
@@ -348,8 +350,7 @@ export default function BottomNav() {
             </Button>
           </DialogActions>
         </Dialog>
-      </Box>
-      
+      </>
     )
   })}
 </Box>

@@ -9,13 +9,20 @@ import {
   LocalActivityRounded,
   AccountCircleRounded,
   AssignmentTurnedInRounded,
+  AddToHomeScreenRounded,
 } from '@mui/icons-material'
 import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
+import { useInstallApp } from '@/hooks/useInstallApp';
+
 const NAV_COLOR = '#5B5FEF'
+
+  // 1. วาง Logic ดักจับการติดตั้งไว้ตรงนี้เลยฃ
+
+
 
 const navItems = [
   {
@@ -75,6 +82,30 @@ function getNotchPath(idx: number, totalW: number) {
 }
 
 export default function BottomNav() {
+
+  const { isInstallable, triggerInstall } = useInstallApp();
+
+  type NavItemType = {
+    label: string;
+    icon: any;
+    path: string;
+    onClick?: () => void; // เครื่องหมาย ? แปลว่ามีหรือไม่มี onClick ก็ได้
+  };
+
+  const allNavItems: NavItemType[] = [
+    ...navItems,
+    ...(isInstallable
+      ? [
+          {
+            label: 'Install App',
+            icon: AddToHomeScreenRounded,
+            path: '',
+            onClick: triggerInstall,
+          },
+        ]
+      : []),
+  ];
+  
   const pathname = usePathname()
 
   const searchParams = useSearchParams()
@@ -102,7 +133,7 @@ export default function BottomNav() {
 
   const handleNavigation = (path: string) => {
   // Home ดูได้โดยไม่ต้อง Login
-  if (path === '/home/') {
+  if (path === '/home/' || path === '') {
     router.push(path)
     return
   }
@@ -122,8 +153,6 @@ export default function BottomNav() {
   // ACTIVE MENU
   const getActivePath = () => {
     const shelfName = searchParams.get('shelf_name')?.trim()
-
-   
 
     // ================= SHELF =================
     if (pathname.startsWith('/shelf')) {
@@ -224,13 +253,27 @@ export default function BottomNav() {
     height: '100%',
   }}
 >
-  {navItems.map(({ label, icon: Icon, path }) => {
-    const active = path === activePath
+  {allNavItems.map(({ label, icon: Icon, path, onClick }) => {
+
+    // เช็กว่าต้องมี path ถึงจะเทียบ active (ปุ่ม Install App จะได้ไม่ขึ้นสี Active มั่ว)
+    const active = Boolean(path) && path === activePath;
 
     return (
       <Box
-        key={path}
-        onClick={() => handleNavigation(path)}
+
+        // 2. ใช้ label เป็น key แทน path (เผื่อในอนาคตมีหลายปุ่มที่ path เป็นค่าว่าง '' จะได้ไม่ชนกัน)
+        key={label}
+        // 3. เช็กก่อนว่ามี onClick ไหม ถ้ามีให้สั่งติดตั้ง ถ้าไม่มีค่อยเปลี่ยนหน้า
+        onClick={() => {
+          if (onClick) {
+            onClick(); // กด Install App -> อยู่หน้าเดิม + เด้งหน้าต่าง Install ทันที!
+          } else {
+            handleNavigation(path); // กดเมนูอื่น -> เปลี่ยนหน้าตามปกติ
+          }
+        }}
+        
+        // key={path}
+        // onClick={() => handleNavigation(path)}
         sx={{
           flex: 1,
           display: 'flex',

@@ -10,6 +10,7 @@ import {
   AccountCircleRounded,
   AssignmentTurnedInRounded,
   AddToHomeScreenRounded,
+  InstallMobileRounded,
 } from '@mui/icons-material'
 import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
@@ -91,7 +92,14 @@ function getNotchPath(idx: number, totalW: number) {
 
 export default function BottomNav() {
 
-  const { isInstallable, triggerInstall, showIOSGuide, setShowIOSGuide } = useInstallApp();
+  const {
+    isInstallable,
+    isIOS,
+    showInstallModal,
+    setShowInstallModal,
+    triggerInstall,
+    confirmAndroidInstall,
+  } = useInstallApp();
 
 
   type NavItemType = {
@@ -323,33 +331,88 @@ export default function BottomNav() {
           </Typography>
         </Box>
 
-        <Dialog open={showIOSGuide} onClose={() => setShowIOSGuide(false)} maxWidth="xs" fullWidth>
-          <DialogTitle sx={{ fontWeight: 700, fontSize: 18 }}>
-            ติดตั้งแอปลงบน iPhone / iPad
+        <Dialog
+          open={showInstallModal}
+          onClose={() => setShowInstallModal(false)}
+          maxWidth="xs"
+          fullWidth
+          PaperProps={{
+            sx: { borderRadius: 3, p: 0.5 }, // ปรับมุมโค้งให้ดูทันสมัย
+          }}
+        >
+          <DialogTitle sx={{ fontWeight: 700, fontSize: 18, pb: 1 }}>
+            ปักหมุด YAAKZ!! Member ไว้ที่หน้าจอ
           </DialogTitle>
+
           <DialogContent>
-            <Typography sx={{ mb: 2, fontSize: 14, color: 'text.secondary' }}>
-              ทำตาม 2 ขั้นตอนง่ายๆ เพื่อเพิ่มแอป Yaakz Member ลงบนหน้าจอหลัก:
-            </Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
-              <IosShareRoundedIcon color="primary" />
-              <Typography sx={{ fontSize: 14 }}>
-                1. กดปุ่ม <b>แชร์ (Share)</b> ที่แถบเมนูด้านล่างของ Safari
+            {isIOS ? (
+              // --- ข้อความสำหรับ iPhone / iPad ---
+              <>
+                <Typography sx={{ mb: 2, fontSize: 14, color: 'text.secondary' }}>
+                  เพิ่มทางลัดลงหน้าจอมือถือ เพื่อเข้าใช้งานครั้งต่อไปได้ในคลิกเดียว ทำตาม 2 ขั้นตอนนี้เลย:
+                </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
+                  <IosShareRoundedIcon color="primary" />
+                  <Typography sx={{ fontSize: 14 }}>
+                    1. กดปุ่ม <b>แชร์ (Share)</b> ที่แถบด้านล่างของ Safari
+                  </Typography>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                  <AddBoxOutlinedIcon color="primary" />
+                  <Typography sx={{ fontSize: 14 }}>
+                    2. เลื่อนลงมาแล้วกด <b>เพิ่มไปยังหน้าจอโฮม (Add to Home Screen)</b>
+                  </Typography>
+                </Box>
+              </>
+            ) : (
+              // --- ข้อความสำหรับ Android / คอมพิวเตอร์ ---
+              <Typography sx={{ fontSize: 14, color: 'text.secondary', lineHeight: 1.6 }}>
+                กดเพิ่มทางลัดลงหน้าจอมือถือหรือคอมพิวเตอร์ เพื่อเข้าใช้งาน <b>YAAKZ!! Member</b> ครั้งต่อไปได้ในคลิกเดียว ไม่ต้องพิมพ์ลิงก์ใหม่ให้เสียเวลา
               </Typography>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <AddBoxOutlinedIcon color="primary" />
-              <Typography sx={{ fontSize: 14 }}>
-                2. เลื่อนลงมาแล้วเลือก <b>เพิ่มไปยังหน้าจอโฮม (Add to Home Screen)</b>
-              </Typography>
-            </Box>
+            )}
           </DialogContent>
-          <DialogActions>
-            <Button onClick={() => setShowIOSGuide(false)} variant="contained" fullWidth>
-              เข้าใจแล้ว
-            </Button>
+
+          <DialogActions sx={{ px: 3, pb: 2 }}>
+            {isIOS ? (
+              <Button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowInstallModal(false);
+                }}
+                variant="contained"
+                fullWidth
+                sx={{ borderRadius: 2, textTransform: 'none', fontWeight: 600 }}
+              >
+                เข้าใจแล้ว
+              </Button>
+            ) : (
+              <>
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowInstallModal(false);
+                  }}
+                  color="inherit"
+                  sx={{ textTransform: 'none' }}
+                >
+                  ไว้ทีหลัง
+                </Button>
+                <Button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    confirmAndroidInstall();
+                  }}
+                  variant="contained"
+                  startIcon={<AddToHomeScreenRounded />}
+                  sx={{ borderRadius: 2, textTransform: 'none', fontWeight: 600 }}
+                >
+                  เพิ่มทางลัด
+                </Button>
+              </>
+            )}
           </DialogActions>
         </Dialog>
+
       </>
     )
   })}

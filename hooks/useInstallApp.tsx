@@ -15,29 +15,29 @@ export function useInstallApp() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [isInstallable, setIsInstallable] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
-  const [showIOSGuide, setShowIOSGuide] = useState(false); // ตัวแปรเปิด-ปิดป๊อปอัปสอนวิธีติดตั้งบน iPhone
+  const [showInstallModal, setShowInstallModal] = useState(false); // ใช้เปิดป๊อปอัปทั้ง Android และ iOS
 
   useEffect(() => {
-    // 1. เช็กว่าเปิดจากแอปที่ติดตั้งไปแล้วหรือยัง (Standalone Mode)
+    // 1. เช็กว่าเปิดจากแอปที่ติดตั้งไปแล้วหรือยัง
     const isStandalone =
       window.matchMedia('(display-mode: standalone)').matches ||
       (window.navigator as any).standalone === true;
 
     if (isStandalone) {
       setIsInstallable(false);
-      return; // ถ้าติดตั้งไปแล้ว ให้ซ่อนปุ่มตลอดไป
+      return;
     }
 
-    // 2. เช็กว่าเป็นอุปกรณ์ iOS (iPhone / iPad / iPod) หรือไม่
+    // 2. เช็กว่าเป็น iOS หรือไม่
     const userAgent = window.navigator.userAgent.toLowerCase();
     const isIOSDevice = /iphone|ipad|ipod/.test(userAgent);
 
     if (isIOSDevice) {
       setIsIOS(true);
-      setIsInstallable(true); // สั่งให้ปุ่ม Install App โชว์บน iPhone ด้วย!
+      setIsInstallable(true);
     }
 
-    // 3. ดักจับสำหรับ Android และคอมพิวเตอร์ (Chrome / Edge)
+    // 3. ดักจับสำหรับ Android และ PC
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
@@ -46,6 +46,7 @@ export function useInstallApp() {
 
     const handleAppInstalled = () => {
       setIsInstallable(false);
+      setShowInstallModal(false);
       setDeferredPrompt(null);
     };
 
@@ -58,22 +59,29 @@ export function useInstallApp() {
     };
   }, []);
 
-  const triggerInstall = async () => {
-    // ถ้าเป็น iPhone ให้เปิดป๊อปอัปสอนวิธีติดตั้งแทน
-    if (isIOS) {
-      setShowIOSGuide(true);
-      return;
-    }
+  // กดปุ่ม Install App ครั้งแรก -> เปิดป๊อปอัปแนะนำเหมือนกันทุกเครื่อง!
+  const triggerInstall = () => {
+    setShowInstallModal(true);
+  };
 
-    // ถ้าเป็น Android / PC ให้เด้งหน้าต่างติดตั้งทันที
+  // กดปุ่ม "ติดตั้งเลย" ข้างในป๊อปอัป (สำหรับ Android / PC)
+  const confirmAndroidInstall = async () => {
     if (!deferredPrompt) return;
     await deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
     if (outcome === 'accepted') {
       setIsInstallable(false);
+      setShowInstallModal(false);
     }
     setDeferredPrompt(null);
   };
 
-  return { isInstallable, triggerInstall, showIOSGuide, setShowIOSGuide };
+  return {
+    isInstallable,
+    isIOS,
+    showInstallModal,
+    setShowInstallModal,
+    triggerInstall,
+    confirmAndroidInstall,
+  };
 }

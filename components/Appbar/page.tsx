@@ -17,6 +17,14 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
 import { useInstallApp } from '@/hooks/useInstallApp';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Button from '@mui/material/Button';
+import IosShareRoundedIcon from '@mui/icons-material/IosShareRounded';
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+
 
 const NAV_COLOR = '#5B5FEF'
 
@@ -83,7 +91,8 @@ function getNotchPath(idx: number, totalW: number) {
 
 export default function BottomNav() {
 
-  const { isInstallable, triggerInstall } = useInstallApp();
+  const { isInstallable, triggerInstall, showIOSGuide, setShowIOSGuide } = useInstallApp();
+
 
   type NavItemType = {
     label: string;
@@ -311,10 +320,40 @@ export default function BottomNav() {
         >
           {label}
         </Typography>
+
+        <Dialog open={showIOSGuide} onClose={() => setShowIOSGuide(false)} maxWidth="xs" fullWidth>
+          <DialogTitle sx={{ fontWeight: 700, fontSize: 18 }}>
+            ติดตั้งแอปลงบน iPhone / iPad
+          </DialogTitle>
+          <DialogContent>
+            <Typography sx={{ mb: 2, fontSize: 14, color: 'text.secondary' }}>
+              ทำตาม 2 ขั้นตอนง่ายๆ เพื่อเพิ่มแอป Yaakz Member ลงบนหน้าจอหลัก:
+            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.5 }}>
+              <IosShareRoundedIcon color="primary" />
+              <Typography sx={{ fontSize: 14 }}>
+                1. กดปุ่ม <b>แชร์ (Share)</b> ที่แถบเมนูด้านล่างของ Safari
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <AddBoxOutlinedIcon color="primary" />
+              <Typography sx={{ fontSize: 14 }}>
+                2. เลื่อนลงมาแล้วเลือก <b>เพิ่มไปยังหน้าจอโฮม (Add to Home Screen)</b>
+              </Typography>
+            </Box>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setShowIOSGuide(false)} variant="contained" fullWidth>
+              เข้าใจแล้ว
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Box>
+      
     )
   })}
 </Box>
     </Box>
   )
+  
 }

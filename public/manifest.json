@@ -1,0 +1,21 @@
+{
+  "name": "Yaakz Member",
+  "short_name": "Yaakz",
+  "description": "ระบบ Member Yaakz",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e11d48",
+  "icons": [
+    {
+      "src": "/images/LOGO_YAAKZ_MEMBER-02.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/LOGO_YAAKZ_MEMBER-02.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
